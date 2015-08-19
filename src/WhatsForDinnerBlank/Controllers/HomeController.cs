@@ -11,22 +11,27 @@ namespace WhatsForDinnerBlank.Controllers
     {
         public IActionResult Index()
         {
-            var model = new List<Recipes>();
-            model.Add(new Recipes { Description = "Dinner 1", Rating = 5, DinnerTime = DateTime.Parse("2015-08-17 06:30:00.000") });
-            model.Add(new Recipes { Description = "Dinner 2", Rating = 6, DinnerTime = DateTime.Parse("2015-08-17 06:30:00.000") });
+            ViewData["Title"] = "Login";
+            ViewData["Message"] = "Welcome, \n please use your first and last name to login to your household.";
 
-            var result = model.OrderBy(i => i.Rating).ToList();
+            //var model2 = new List<Recipes>();
+            //model2.Add(new Recipes { Description = "Dinner 1", Rating = 5, DinnerTime = DateTime.Parse("2015-08-17 06:30:00.000") });
+            //model2.Add(new Recipes { Description = "Dinner 2", Rating = 6, DinnerTime = DateTime.Parse("2015-08-17 06:30:00.000") });
 
-            return View(result);
+            //var result = model2.OrderBy(i => i.Rating).ToList();
+
+            return View();
         }
 
-        public IActionResult Vote(object description)
-        { 
-            var model = new List<Recipes>();
-            model.Add(new Recipes { Description = "Dinner 1", Rating = 5, DinnerTime = DateTime.Parse("2015-08-17 06:30:00.000") });
-            model.Add(new Recipes { Description = "Dinner 2", Rating = 6, DinnerTime = DateTime.Parse("2015-08-17 06:30:00.000") });
+        [HttpPost]
+        public IActionResult Submit()
+        {
+            var model = new List<User>();
 
-            model.Where(item => item.Description == description.ToString()).First().Rating = + 1;
+            model.Add(new User { FirstName = "Aaron", LastName = "Day", Email = "Aaronday@live.com.au" });
+            model.Add(new User { FirstName = "Adele", LastName = "Rose", Email = "adelerose31@hotmail.com" });
+
+            // model.Where(item => item.Description == description.ToString()).First().Rating = + 1;
 
             return View(model);
         }

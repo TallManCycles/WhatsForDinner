@@ -1,33 +1,14 @@
-﻿@model IEnumerable<WhatsForDinnerBlank.Model.Recipes>
+﻿<!DOCTYPE html>
+<h3>@ViewData["Title"]</h3>
 
-<body>
-    <div>
-        <h1>Whats For Dinner</h1>
+<div >
+    <center><p>@ViewData["Message"]</p></center>
+</div>
 
-        <table>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Rating)
-                </th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Rating)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Vote!", "Vote","Home", new { id = item.Description})
-                    </td>
-                </tr>
-            }
-        </table>
-    </div>
-</body>
+<div>
+    <form align="center">
+            First name: <input type="text" name="fname"><br>
+            Last name: <input type="text" name="lname"><br>
+            <input type="submit" value="Submit">
+    </form>
+</div>
